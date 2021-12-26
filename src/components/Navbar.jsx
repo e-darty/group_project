@@ -26,6 +26,21 @@ const Navbar = (props) => {
     setAnchorElNav(null);
   };
 
+
+
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+
+
+
   return (
     <AppBar
       position="static"
@@ -97,34 +112,35 @@ const Navbar = (props) => {
             >
               online services
             </Button> */}
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", display: "block" }}
-              onClick={() => {
+
+            <div>
+      <Button
+        id="basic-button"
+        sx={{ my: 2, color: "black", display: "block" }}
+        onClick={handleClick}
+      >
+        online services
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'basic-button',
+        }}
+      >
+        <MenuItem sx={{ my: 2, color: "black", display: "block" }} onClick={handleClose} onClick={() => {
                 props.changeView("cin");
-              }}
-            >
-              CIN
-            </Button>
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", display: "block" }}
-              onClick={() => {
-                props.changeView("driving");
-              }}
-            >
-              Driving Licence
-            </Button>
-            
-            <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", display: "block" }}
-              onClick={() => {
+              }}>CIN</MenuItem>
+        <MenuItem sx={{ my: 2, color: "black", display: "block" }} onClick={handleClose} onClick={() => {
                 props.changeView("grey");
-              }}
-            >
-              Grey card
-            </Button>
+              }}> Grey Card</MenuItem>
+        <MenuItem sx={{ my: 2, color: "black", display: "block" }} onClick={handleClose} onClick={() => {
+                props.changeView("driving");
+              }}> Driving Licence</MenuItem> 
+      </Menu>
+    </div>
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "black", display: "block" }}
