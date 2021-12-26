@@ -91,15 +91,46 @@ const Navbar = (props) => {
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
+            {/* <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "black", display: "block" }}
             >
               online services
+            </Button> */}
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "black", display: "block" }}
+              onClick={() => {
+                props.changeView("cin");
+              }}
+            >
+              CIN
             </Button>
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "black", display: "block" }}
+              onClick={() => {
+                props.changeView("driving");
+              }}
+            >
+              Driving Licence
+            </Button>
+            
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "black", display: "block" }}
+              onClick={() => {
+                props.changeView("grey");
+              }}
+            >
+              Grey card
+            </Button>
+            <Button
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "black", display: "block" }}
+              onClick={() => {
+                props.changeView("about");
+              }}
             >
               about edarty
             </Button>
