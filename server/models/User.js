@@ -8,11 +8,7 @@ const userSchema = new mongoose.Schema({
   password: String,
   name: String,
   lastName: String,
-  dateOfBirth: {
-    type: Date,
-    required: true,
-    trim: true,
-  },
+  dateOfBirth: String,
   placeOfBirth: String,
   drivingLicence: String,
 });

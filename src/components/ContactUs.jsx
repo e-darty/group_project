@@ -4,123 +4,51 @@ import "../index.css";
 
 function Contact(props) {
   return (
-    <div class="contact3 py-5">
-      <div class="row no-gutters">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card-shadow">
-                <img
-                  src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/2.jpg"
-                  class="img-fluid"
-                />
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="contact-box ml-3">
-                <h1 class="font-weight-light mt-2">Quick Contact</h1>
-                <form class="mt-4">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="form-group mt-2">
-                        <input
-                          class="form-control"
-                          type="text"
-                          placeholder="name"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="form-group mt-2">
-                        <input
-                          class="form-control"
-                          type="email"
-                          placeholder="email address"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="form-group mt-2">
-                        <input
-                          class="form-control"
-                          type="text"
-                          placeholder="phone"
-                        />
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <div class="form-group mt-2">
-                        <textarea
-                          class="form-control"
-                          rows="3"
-                          placeholder="message"
-                        ></textarea>
-                      </div>
-                    </div>
-                    <div class="col-lg-12">
-                      <button
-                        type="submit"
-                        class="btn btn-danger-gradiant mt-3 text-white border-0 px-3 py-2"
-                      >
-                        <span> SUBMIT</span>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="card mt-4 border-0 mb-4">
-                <div class="row">
-                  <div class="col-lg-4 col-md-4">
-                    <div class="card-body d-flex align-items-center c-detail pl-0">
-                      <div class="mr-3 align-self-center">
-                        <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png" />
-                      </div>
-                      <div class="">
-                        <h6 class="font-weight-medium">Address</h6>
-                        <p class="">
-                          601 Sherwood Ave.
-                          <br /> San Bernandino
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4">
-                    <div class="card-body d-flex align-items-center c-detail">
-                      <div class="mr-3 align-self-center">
-                        <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon2.png" />
-                      </div>
-                      <div class="">
-                        <h6 class="font-weight-medium">Phone</h6>
-                        <p class="">
-                          251 546 9442
-                          <br /> 630 446 8851
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4">
-                    <div class="card-body d-flex align-items-center c-detail">
-                      <div class="mr-3 align-self-center">
-                        <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png" />
-                      </div>
-                      <div class="">
-                        <h6 class="font-weight-medium">Email</h6>
-                        <p class="">
-                          info@wrappixel.com
-                          <br /> 123@wrappixel.com
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="contain">
+
+  <div class="wrapper">
+
+    <div class="form">
+      <h4>GET IN TOUCH</h4>
+      <h2 class="form-headline">Send us a message</h2>
+      <form id="submit-form" action="">
+        <p>
+          <input id="name" class="form-input" type="text" placeholder="Your Name*"/>
+          <small class="name-error"></small>
+        </p>
+        <p>
+          <input id="email" class="form-input" type="email" placeholder="Your Email*"/>
+          <small class="name-error"></small>
+        </p>
+        <p class="full-width">
+          <input id="company-name" class="form-input" type="text" placeholder="Phone Number*" required/>
+          <small></small>
+        </p>
+        <p class="full-width">
+          <textarea  minlength="20" id="message" cols="30" rows="7" placeholder="Your Message*" required></textarea>
+          <small></small>
+        </p>
+      
+        <p class="full-width">
+          <input type="submit" class="submit-btn" value="Submit" onclick="checkValidations()" />
+
+        </p>
+      </form>
     </div>
+
+    <div class="contacts contact-wrapper">
+
+      <ul>
+        <li>Get in touch with us and send us your opinion 
+          how we can help you?</li>
+        <span class="hightlight-contact-info">
+          <li class="email-info"><i class="fa fa-envelope" aria-hidden="true"></i> info@demo.com</li>
+          <li><i class="fa fa-phone" aria-hidden="true"></i> <span class="highlight-text">+216 29 864 500</span></li>
+        </span>
+      </ul>
+    </div>
+  </div>
+</div>
   );
 }
 export default Contact

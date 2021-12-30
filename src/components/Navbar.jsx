@@ -11,6 +11,9 @@ import LoginIcon from "@mui/icons-material/Login";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Fab from '@mui/material/Fab';
+
+import EditIcon from '@mui/icons-material/Edit';
 
 
 const pages = ["online services ", "about edarty", "contact us"];
@@ -188,9 +191,25 @@ const Navbar = (props) => {
               </IconButton>
             </Tooltip>
           </Box>
+          <Box sx={{ "& > :not(style)": { m: 2 } }}>
+            <Fab
+              size="small"
+              color="secondary"
+              aria-label="edit"
+              onClick={() => {
+                props.changeView("admin");
+              }}
+            >
+              <EditIcon />
+            </Fab>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
 export default Navbar;
+
+
+
+  
