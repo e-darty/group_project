@@ -6,6 +6,10 @@ import Login from "./components/Login"
 import Contact from "./components/ContactUs"
 import Admin from "./components/Admin"
 import AddUser from "./components/AddUser"
+import CINComponent from "./components/cin.jsx"
+import DriveComponent from "./components/permis.jsx";
+import GreyComponent from "./components/cgrise.jsx"
+
 class App extends React.Component {
   constructor() {
     super();
@@ -13,6 +17,7 @@ class App extends React.Component {
       view: "home",
       isAuthenticated: false,
       user: {},
+      view: "cin",
     };
 
     this.changeView = this.changeView.bind(this);
@@ -63,6 +68,16 @@ class App extends React.Component {
       return <Admin user={user} changeView={this.changeView} />;
     }else if(view === "add"){
       return <AddUser />;
+    }else if(view === "login"){
+return <Login/>
+    }else if(view ==="contact"){
+      return <Contact/>
+    } else if(view === "cin"){
+      return <CINComponent/>
+    } else if(view === "driving"){
+      return <DriveComponent/>
+    } else if(view === "grey"){
+      return <GreyComponent/>
     }
   }
   render() {
