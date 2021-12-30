@@ -15,11 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-//list all of your routes here
+
 app.use("/api/user", routes.userRoute);
 
 
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
   console.log("app connected on: " + PORT);
