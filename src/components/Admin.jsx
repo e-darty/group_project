@@ -14,7 +14,7 @@ export default class Admin extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log(props)
+
   }
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
@@ -69,6 +69,15 @@ export default class Admin extends React.Component {
           }}
         >
           ADD USER
+        </button>
+        <button
+          className="create-submit-button"
+          type="submit"
+          onClick={() => {
+            this.props.changeView("messages");
+          }}
+        >
+Check messages
         </button>
       </div>
     );

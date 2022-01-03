@@ -1,11 +1,14 @@
 import React from "react";
 import axios from "axios";
 import Navbar from "./components/Navbar";
-import Home from "./components/Home"
-import Login from "./components/Login"
-import Contact from "./components/ContactUs"
-import Admin from "./components/Admin"
-import AddUser from "./components/AddUser"
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Contact from "./components/ContactUs";
+import Admin from "./components/Admin";
+import AddUser from "./components/AddUser";
+import Services from "./components/Services";
+import About from "./components/About";
+import Messages from "./components/Messages";
 class App extends React.Component {
   constructor() {
     super();
@@ -13,10 +16,12 @@ class App extends React.Component {
       view: "home",
       isAuthenticated: false,
       user: {},
+      messages: {},
     };
 
     this.changeView = this.changeView.bind(this);
     this.updateUsers = this.updateUsers.bind(this);
+    this.updateMessages = this.updateMessages.bind(this);
   }
   updateUser(data) {
     this.setState({
@@ -24,13 +29,29 @@ class App extends React.Component {
       user: data.user,
     });
   }
+
   fetchData() {
-    axios.get("http://localhost:3001/api/user").then(({ data }) => {
-      console.log(data);
-      this.setState({
-        user: data,
+    let one = "http://localhost:3001/api/messages";
+    let two = "http://localhost:3001/api/user";
+    const requestOne = axios.get(one);
+    const requestTwo = axios.get(two);
+    axios
+      .all([requestOne, requestTwo])
+      .then(
+        axios.spread((...responses) => {
+          console.log(responses[0].data);
+          console.log(responses[1].data);
+          const responseOne = responses[0].data;
+          const responseTwo = responses[1].data;
+          this.setState({
+            messages: responseOne,
+            user: responseTwo,
+          });
+        })
+      )
+      .catch((errors) => {
+        console.log(errors);
       });
-    });
   }
 
   componentDidMount() {
@@ -49,6 +70,13 @@ class App extends React.Component {
       user: newUser,
     });
   }
+  updateMessages(newmessage) {
+    let newMessage = this.state.messages;
+    newMessage.unshift(newMessage);
+    this.setState({
+      messages: newMessage,
+    });
+  }
 
   renderView() {
     const { view, user } = this.state;
@@ -61,8 +89,14 @@ class App extends React.Component {
       return <Contact />;
     } else if (view === "admin") {
       return <Admin user={user} changeView={this.changeView} />;
-    }else if(view === "add"){
+    } else if (view === "add") {
       return <AddUser />;
+    } else if (view === "services") {
+      return <Services />;
+    } else if (view === "about") {
+      return <About />;
+    } else if (view === "messages") {
+      return <Messages messages ={this.state.messages}/>;
     }
   }
   render() {

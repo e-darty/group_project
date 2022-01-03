@@ -35,7 +35,7 @@ export default class AddUser extends React.Component {
     return (
       <div>
         <h2>ADD NEW USER</h2>
-        <form id="submit-form" action="">
+  <form id="submit-form" action="">
           <ul>
             <li id="input">
               <input
@@ -88,6 +88,7 @@ export default class AddUser extends React.Component {
               />
             </li>
             <li>
+              
               <input
                 id="drivingLicence"
                 class="form-input"
@@ -106,6 +107,7 @@ export default class AddUser extends React.Component {
               onClick={this.handleSubmit}
             />
           </p>
+        
         </form>
       </div>
     );
