@@ -1,7 +1,8 @@
 import React from 'react';
-
+import data from '../data/data.js';
 function Home(props) {
   return (
+
     <div
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL + "/image.png"})`,
@@ -21,6 +22,8 @@ function Home(props) {
     </div>
 
    
+
+
   );
 }
 export default Home

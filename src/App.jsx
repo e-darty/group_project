@@ -9,6 +9,10 @@ import AddUser from "./components/AddUser";
 import Services from "./components/Services";
 import About from "./components/About";
 import Messages from "./components/Messages";
+import CINComponent from "./components/cin.jsx"
+import DriveComponent from "./components/permis.jsx";
+import GreyComponent from "./components/cgrise.jsx"
+
 class App extends React.Component {
   constructor() {
     super();
@@ -16,7 +20,10 @@ class App extends React.Component {
       view: "home",
       isAuthenticated: false,
       user: {},
+
       messages: {},
+
+
     };
 
     this.changeView = this.changeView.bind(this);
@@ -97,6 +104,18 @@ class App extends React.Component {
       return <About />;
     } else if (view === "messages") {
       return <Messages messages ={this.state.messages}/>;
+
+    }else if(view === "login"){
+return <Login/>
+    }else if(view ==="contact"){
+      return <Contact/>
+    } else if(view === "cin"){
+      return <CINComponent/>
+    } else if(view === "driving"){
+      return <DriveComponent/>
+    } else if(view === "grey"){
+      return <GreyComponent/>
+
     }
   }
   render() {
