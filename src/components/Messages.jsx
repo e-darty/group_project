@@ -26,6 +26,7 @@ const Messages = ({messages}) => {
               ))}
             </tbody>
           </table>
+          
         </div>
     );
   }

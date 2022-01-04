@@ -22,17 +22,19 @@ class App extends React.Component {
       user: {},
       isAuthenticated: false,
       messages: {},
-      actual:{}
+      actual:{},
+      actualUser: {},
     };
 
     this.changeView = this.changeView.bind(this);
     this.updateUsers = this.updateUsers.bind(this);
     this.updateMessages = this.updateMessages.bind(this);
+    this.updateUser = this.updateUser.bind(this);
   }
   updateUser(data) {
     this.setState({
       isAuthenticated: true,
-      user: data.user,
+      actualUser: data.user,
     });
   }
 
@@ -44,8 +46,9 @@ class App extends React.Component {
     axios
       .all([requestOne, requestTwo])
       .then(
+        
         axios.spread((...responses) => {
-
+console.log(responses);
           const responseOne = responses[0].data;
           const responseTwo = responses[1].data;
           this.setState({
@@ -89,9 +92,8 @@ class App extends React.Component {
 
     if (view === "home") {
       return <Home />;
-    } else if (view === "login") {
-      return <Login />;
-    } else if (view === "contact") {
+    } 
+    else if (view === "contact") {
       return <Contact />;
     } else if (view === "admin") {
       return <Admin user={user} changeView={this.changeView} />;
@@ -105,7 +107,7 @@ class App extends React.Component {
       return <Messages messages ={this.state.messages}/>;
 
     }else if(view === "login"){
-return <Login/>
+return <Login updateUser={this.updateUser} />;
     }else if(view ==="contact"){
       return <Contact/>
     } else if(view === "cin"){

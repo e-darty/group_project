@@ -161,7 +161,9 @@ delete() {
               type="submit"
               class="submit-btn"
               value="  Delete Citizen"
-              onClick={this.delete}
+              onClick={() => {
+                this.props.changeView("admin");
+              },this.delete}
             />
           </p>
         </form>
