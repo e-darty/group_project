@@ -11,6 +11,8 @@ export default class AddUser extends React.Component {
       dateOfBirth: "",
       placeOfBirth: "",
       drivingLicence: "",
+      licence: "",
+      adress: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,7 +37,7 @@ export default class AddUser extends React.Component {
     return (
       <div>
         <h2>ADD NEW USER</h2>
-  <form id="submit-form" action="">
+        <form id="submit-form" action="">
           <ul>
             <li id="input">
               <input
@@ -88,13 +90,32 @@ export default class AddUser extends React.Component {
               />
             </li>
             <li>
-              
               <input
                 id="drivingLicence"
                 class="form-input"
                 type="text"
                 placeholder="Add driving licence"
                 value={this.state.drivingLicence}
+                onChange={this.handleChange}
+              />
+            </li>
+            <li>
+              <input
+                id="licence"
+                class="form-input"
+                type="text"
+                placeholder="add licence Plate number"
+                value={this.state.licence}
+                onChange={this.handleChange}
+              />
+            </li>
+            <li>
+              <input
+                id="adress"
+                class="form-input"
+                type="text"
+                placeholder="add adress"
+                value={this.state.adress}
                 onChange={this.handleChange}
               />
             </li>
@@ -107,7 +128,6 @@ export default class AddUser extends React.Component {
               onClick={this.handleSubmit}
             />
           </p>
-        
         </form>
       </div>
     );

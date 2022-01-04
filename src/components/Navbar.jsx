@@ -109,9 +109,6 @@ const Navbar = (props) => {
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-
-       
-
             <div>
       <Button
         id="basic-button"

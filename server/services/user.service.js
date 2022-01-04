@@ -21,7 +21,7 @@ module.exports = new (class UserService {
     return this.user.findOne({ _id });
   }
   deleteOne() {
-    return this.user.findOneAndDelete({ _id }, payload, {
+    return this.user.findOneAndDelete(  {
       useFindAndModify: true
     });
   }

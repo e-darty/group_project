@@ -11,6 +11,8 @@ const userSchema = new mongoose.Schema({
   dateOfBirth: String,
   placeOfBirth: String,
   drivingLicence: String,
+  licence: String,
+  adress: String,
 });
 
 const UserModel = mongoose.model("user", userSchema);

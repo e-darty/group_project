@@ -12,7 +12,7 @@ import Messages from "./components/Messages";
 import CINComponent from "./components/cin.jsx"
 import DriveComponent from "./components/permis.jsx";
 import GreyComponent from "./components/cgrise.jsx"
-
+import EditUser from "./components/EditUser";
 class App extends React.Component {
   constructor() {
     super();
@@ -20,10 +20,9 @@ class App extends React.Component {
       view: "home",
       isAuthenticated: false,
       user: {},
-
+      isAuthenticated: false,
       messages: {},
-
-
+      actual:{}
     };
 
     this.changeView = this.changeView.bind(this);
@@ -46,8 +45,7 @@ class App extends React.Component {
       .all([requestOne, requestTwo])
       .then(
         axios.spread((...responses) => {
-          console.log(responses[0].data);
-          console.log(responses[1].data);
+
           const responseOne = responses[0].data;
           const responseTwo = responses[1].data;
           this.setState({
@@ -64,9 +62,10 @@ class App extends React.Component {
   componentDidMount() {
     this.fetchData();
   }
-  changeView(option) {
+  changeView(option,object) {
     this.setState({
       view: option,
+      actual:object
     });
   }
 
@@ -79,14 +78,14 @@ class App extends React.Component {
   }
   updateMessages(newmessage) {
     let newMessage = this.state.messages;
-    newMessage.unshift(newMessage);
+    newMessage.unshift(newmessage);
     this.setState({
       messages: newMessage,
     });
   }
 
   renderView() {
-    const { view, user } = this.state;
+    const { view, user ,actual} = this.state;
 
     if (view === "home") {
       return <Home />;
@@ -116,6 +115,8 @@ return <Login/>
     } else if(view === "grey"){
       return <GreyComponent/>
 
+    }else if (view === "edit"){
+      return <EditUser actual={actual} />;
     }
   }
   render() {
