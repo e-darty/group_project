@@ -11,10 +11,12 @@ export default class Admin extends React.Component {
       dateOfBirth: "",
       placeOfBirth: "",
       drivingLicence: "",
+      licence:"",
+      adress:""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    console.log(props)
+console.log(this.props)
   }
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
@@ -45,17 +47,27 @@ export default class Admin extends React.Component {
                 <th>DATE OF BIRTH</th>
                 <th>PLACE OF BIRTH</th>
                 <th>DRIVING LICENCE</th>
+                <th>LICENCE PLATE</th>
+                <th>ADRESS</th>
               </tr>
             </thead>
             <tbody>
               {this.props.user.map((u, index) => (
-                <tr className="user-list-item" key={index}>
+                <tr
+                  className="user-list-item"
+                  key={index}
+                  onClick={() => {
+                    this.props.changeView("edit", u);
+                  }}
+                >
                   <td> {u.cin} </td>
                   <td> {u.name} </td>
                   <td> {u.lastName} </td>
                   <td> {u.dateOfBirth} </td>
                   <td> {u.placeOfBirth} </td>
                   <td> {u.drivingLicence} </td>
+                  <td> {u.licence} </td>
+                  <td> {u.adress} </td>
                 </tr>
               ))}
             </tbody>
@@ -69,6 +81,15 @@ export default class Admin extends React.Component {
           }}
         >
           ADD USER
+        </button>
+        <button
+          className="create-submit-button"
+          type="submit"
+          onClick={() => {
+            this.props.changeView("messages");
+          }}
+        >
+          Check messages
         </button>
       </div>
     );

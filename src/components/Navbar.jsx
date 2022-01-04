@@ -16,7 +16,7 @@ import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 
 
-const pages = ["online services ", "about edarty", "contact us"];
+
 
 const Navbar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -109,13 +109,6 @@ const Navbar = (props) => {
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* <Button
-              onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", display: "block" }}
-            >
-              online services
-            </Button> */}
-
             <div>
       <Button
         id="basic-button"
@@ -145,7 +138,9 @@ const Navbar = (props) => {
       </Menu>
     </div>
             <Button
-              onClick={handleCloseNavMenu}
+              onClick={() => {
+                props.changeView("about");
+              }}
               sx={{ my: 2, color: "black", display: "block" }}
               onClick={() => {
                 props.changeView("about");

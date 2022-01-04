@@ -1,18 +1,19 @@
 import React from "react";
 import axios from "axios";
-import "../index.css";
+
 export default class Login extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      cin: "",
+      username: "",
       password: "",
+      cin: 0,
       view: "signup",
-      isAuthenticated: false,
 
     };
+    console.log(this.props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.changeView = this.changeView.bind(this);
     this.signin = this.signin.bind(this);
     this.signup = this.signup.bind(this);
@@ -30,11 +31,10 @@ export default class Login extends React.Component {
   signup(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/api/user/signup", {
-        cin: this.state.cin,
-        password: this.state.password,
-      })
+      .post("http://localhost:3001/api/user/signup", this.state)
+
       .then(({ data }) => {
+        console.log(data);
         this.props.updateUser(data);
       });
   }
@@ -42,23 +42,15 @@ export default class Login extends React.Component {
   signin(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/api/user/signin", {
-        cin: this.state.cin,
-        password: this.state.password,
-      })
+      .post("http://localhost:3001/api/user/signin", this.state)
+
       .then(({ data }) => {
+        console.log(data);
         this.props.updateUser(data);
       });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    axios
-      .post("http://localhost:3001/api/user", this.state)
-      .then(({ data }) => {
-        this.props.updateBlogs(data);
-      });
-  }
+
 
   render() {
     return (
@@ -70,40 +62,44 @@ export default class Login extends React.Component {
               <h2>Signup</h2>
               <form>
                 <input
-                  id="cin"
-                  class="form-input"
+                  id="username"
+                  className="create-input"
                   type="text"
-                  placeholder="cin"
-                  value={this.state.cin}
+                  placeholder="Username"
+                  value={this.state.username}
                   onChange={this.handleChange}
                 />
                 <input
                   id="password"
-                  class="form-input"
+                  className="create-input"
                   type="text"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleChange}
                 />
-
-                <p class="full-width">
-                  <input
-                    type="submit"
-                    class="submit-btn"
-                    value="SIGNUP"
-                    onclick="checkValidations()"
-                  />
-                </p>
-                <p class="full-width">
-                  <input
-                    type="submit"
-                    class="submit-btn"
-                    value="SIGNIN"
-                    onClick={() => {
-                      this.changeView("signin");
-                    }}
-                  />
-                </p>
+                <input
+                  id="cin"
+                  className="create-input"
+                  type="text"
+                  placeholder="Cin"
+                  value={this.state.cin}
+                  onChange={this.handleChange}
+                />
+                <button
+                  className="create-submit-button"
+                  type="submit"
+                  onClick={this.signup}
+                >
+                  signup
+                </button>
+                <span
+                  style={{ marginLeft: "20px" }}
+                  onClick={() => {
+                    this.changeView("signin");
+                  }}
+                >
+                  click here to signin
+                </span>
               </form>
             </div>
           </div>
@@ -111,42 +107,38 @@ export default class Login extends React.Component {
           <div className="create">
             <div className="create-editor">
               <h2>Signin</h2>
-              <form id="submit-form" action="">
+              <form>
                 <input
                   id="username"
-                  class="form-input"
+                  className="create-input"
                   type="text"
-                  placeholder="cin"
-                  value={this.state.cin}
+                  placeholder="Username"
+                  value={this.state.username}
                   onChange={this.handleChange}
                 />
                 <input
                   id="password"
-                  class="form-input"
+                  className="create-input"
                   type="text"
                   placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleChange}
                 />
-                <p class="full-width">
-                  <input
-                    type="submit"
-                    class="submit-btn"
-                    value="SIGNIN"
-                    onClick={this.signin}
-                  />
-                </p>
-                <p class="full-width">
-                  <input
-                    type="submit"
-                    class="submit-btn"
-                    value="SIGNUP"
-                    onClick={() => {
-                      this.changeView("signup");
-                    }}
-                  />
-                </p>
-
+                <button
+                  className="create-submit-button"
+                  type="submit"
+                  onClick={this.signin}
+                >
+                  signin
+                </button>
+                <span
+                  style={{ marginLeft: "20px" }}
+                  onClick={() => {
+                    this.changeView("signup");
+                  }}
+                >
+                  click here to signup
+                </span>
               </form>
             </div>
           </div>
