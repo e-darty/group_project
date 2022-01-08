@@ -1,4 +1,5 @@
 module.exports = {
-  userController: require("./user.controller"),
+  citizenController: require("./citizen.controller"),
   messageController: require("./message.controller"),
+  userController: require("./user.controller")
 };

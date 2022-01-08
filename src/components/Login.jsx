@@ -9,11 +9,9 @@ export default class Login extends React.Component {
       password: "",
       cin: 0,
       view: "signup",
-
     };
     console.log(this.props);
     this.handleChange = this.handleChange.bind(this);
-
     this.changeView = this.changeView.bind(this);
     this.signin = this.signin.bind(this);
     this.signup = this.signup.bind(this);
@@ -31,26 +29,43 @@ export default class Login extends React.Component {
   signup(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/api/user/signup", this.state)
+      .post("/api/user/signup", {
+        username: this.state.username,
+        password: this.state.password,
+        cin: this.state.cin,
+      })
+      .then((response) => {
+        if (response.data === "User already exists") {
+          alert("User already exists");
+        }else{
+this.props.updateUser(response.data);
+alert("Successful Registration");
+        }
+        
+      })
 
-      .then(({ data }) => {
-        console.log(data);
-        this.props.updateUser(data);
-      });
   }
 
   signin(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/api/user/signin", this.state)
+      .post("/api/user/signin", {
+        username: this.state.username,
+        password: this.state.password,
+      })
+      .then((response) => {
+if (response.data === "User doesn't exist"){
+  alert("User doesn't exist")
+}else if (response.data === "Wrong password"){
+  alert("Wrong password");
+}else{
+  alert("Welcome to edarty");
+  this.props.updateUser(response.data);
+}
 
-      .then(({ data }) => {
-        console.log(data);
-        this.props.updateUser(data);
-      });
+      })
+ 
   }
-
-
 
   render() {
     return (
@@ -89,6 +104,7 @@ export default class Login extends React.Component {
                   className="create-submit-button"
                   type="submit"
                   onClick={this.signup}
+
                 >
                   signup
                 </button>

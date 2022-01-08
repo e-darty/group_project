@@ -11,14 +11,12 @@ import LoginIcon from "@mui/icons-material/Login";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import Fab from '@mui/material/Fab';
+import Fab from "@mui/material/Fab";
 
-import EditIcon from '@mui/icons-material/Edit';
-
-
-
+import EditIcon from "@mui/icons-material/Edit";
 
 const Navbar = (props) => {
+  console.log(props);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -29,9 +27,6 @@ const Navbar = (props) => {
     setAnchorElNav(null);
   };
 
-
-
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -40,9 +35,6 @@ const Navbar = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-
-
 
   return (
     <AppBar
@@ -110,33 +102,65 @@ const Navbar = (props) => {
           ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <div>
-      <Button
-        id="basic-button"
-        sx={{ my: 2, color: "black", display: "block" }}
-        onClick={handleClick}
-      >
-        online services
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <MenuItem sx={{ my: 2, color: "black", display: "block" }} onClick={handleClose} onClick={() => {
-                props.changeView("cin");
-              }}>CIN</MenuItem>
-        <MenuItem sx={{ my: 2, color: "black", display: "block" }} onClick={handleClose} onClick={() => {
-                props.changeView("grey");
-              }}> Grey Card</MenuItem>
-        <MenuItem sx={{ my: 2, color: "black", display: "block" }} onClick={handleClose} onClick={() => {
-                props.changeView("driving");
-              }}> Driving Licence</MenuItem> 
-      </Menu>
-    </div>
+              <Button
+                id="basic-button"
+                sx={{ my: 2, color: "black", display: "block" }}
+                onClick={handleClick}
+              >
+                online services
+              </Button>
+              <Menu
+                id="basic-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                  "aria-labelledby": "basic-button",
+                }}
+              >
+                <MenuItem
+                  sx={{ my: 2, color: "black", display: "block" }}
+                  onClick={handleClose}
+                  onClick={() => {
+                    {
+                      props.isAuthenticated
+                        ? props.changeView("cin")
+                        : props.changeView("login");
+                    }
+                  }}
+                >
+                  CIN
+                </MenuItem>
+                <MenuItem
+                  sx={{ my: 2, color: "black", display: "block" }}
+                  onClick={handleClose}
+                  onClick={() => {
+                    {
+                      props.isAuthenticated
+                        ? props.changeView("grey")
+                        : props.changeView("login");
+                    }
+                  }}
+                >
+                  {" "}
+                  Grey Card
+                </MenuItem>
+                <MenuItem
+                  sx={{ my: 2, color: "black", display: "block" }}
+                  onClick={handleClose}
+                  onClick={() => {
+                    {
+                      props.isAuthenticated
+                        ? props.changeView("driving")
+                        : props.changeView("login");
+                    }
+                  }}
+                >
+                  {" "}
+                  Driving Licence
+                </MenuItem>
+              </Menu>
+            </div>
             <Button
               onClick={() => {
                 props.changeView("about");
@@ -205,6 +229,47 @@ const Navbar = (props) => {
 };
 export default Navbar;
 
+//  {
+//    this.state.isAuthenticated ? (
+//      <div className="nav">
 
+//        <span className="logo" onClick={() => this.changeView("feed")}>
+//          BLOGMODO
+//        </span>
 
-  
+//        <span
+//          className={
+//            this.state.view === "feed" ? "nav-selected" : "nav-unselected"
+//          }
+//          onClick={() => this.changeView("feed")}
+//        >
+//          See all Posts
+//        </span>
+
+//        {this.state.user.role === "admin" ||
+//        this.state.user.role === "author" ? (
+//          <span
+//            className="nav-unselected"
+//            onClick={() => this.changeView("create")}
+//          >
+//            Write a Post
+//          </span>
+//        ) : null}
+
+//        {this.state.user.role === "admin" ? (
+//          <span
+//            className="nav-unselected"
+//            onClick={() => this.changeView("admin")}
+//          >
+//            Admin
+//          </span>
+//        ) : null}
+//      </div>
+//    ) : (
+//      <div className="nav">
+//        <span className="logo" onClick={() => this.changeView("feed")}>
+//          BLOGMODO
+//        </span>
+//      </div>
+//    );
+//  }

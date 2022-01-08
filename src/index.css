@@ -169,7 +169,7 @@ textarea {
 
 button, .submit-btn {
   background: transparent;
-  border: 1px solid #ec1c24;
+
   color: #ec1c24;
   border-radius: 15px;
   padding: 5px 20px;
@@ -181,4 +181,5 @@ button:focus , .submit-btn:focus{
   outline: 0;
   color: #eee;
 }
+
    ul { list-style-type: none; }

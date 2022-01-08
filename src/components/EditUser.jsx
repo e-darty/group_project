@@ -13,6 +13,10 @@ export default class EditUser extends React.Component {
       drivingLicence: props.actual.drivingLicence,
       licence: props.actual.licence,
       adress: props.actual.adress,
+      adress: props.actual.carName,
+      adress: props.actual.carType,
+      adress: props.actual.carNum1,
+      adress: props.actual.carNum2,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,7 +32,7 @@ export default class EditUser extends React.Component {
   handleSubmit() {
     axios
       .put(
-        `http://localhost:3001/api/user/${this.props.actual._id}`,
+        `http://localhost:3001/api/citizen/${this.props.actual._id}`,
         this.state
       )
       .then((response) => {
@@ -38,7 +42,7 @@ export default class EditUser extends React.Component {
 
 delete() {
 
- fetch(`http://localhost:3001/api/user/${this.props.actual._id}`, {
+ fetch(`http://localhost:3001/api/citizen/${this.props.actual._id}`, {
    method: "DELETE",
  }).then(() => this.setState({ status: "Delete successful" }));
   }
@@ -59,6 +63,10 @@ delete() {
                 <th>DRIVING LICENCE</th>
                 <th>LICENCE PLATE NUMBER</th>
                 <th>ADRESS</th>
+                <th>Car Model</th>
+                <th>Car Type</th>
+                <th>Car Num1</th>
+                <th>Car Num2</th>
               </tr>
             </thead>
             <tbody>
@@ -144,6 +152,46 @@ delete() {
                     onChange={this.handleChange}
                   />
                 </td>
+                <td>
+                  {this.props.actual.carName}
+                  <input
+                    id="carName"
+                    type="text"
+                    placeholder="add model"
+                    value={this.state.carName}
+                    onChange={this.handleChange}
+                  />
+                </td>
+                <td>
+                  {this.props.actual.carType}
+                  <input
+                    id="carType"
+                    type="text"
+                    placeholder="add Type"
+                    value={this.state.carType}
+                    onChange={this.handleChange}
+                  />
+                </td>
+                <td>
+                  {this.props.actual.carNum1}
+                  <input
+                    id="carNum2"
+                    type="text"
+                    placeholder="add Number"
+                    value={this.state.carNum1}
+                    onChange={this.handleChange}
+                  />
+                </td>
+                <td>
+                  {this.props.actual.carNum2}
+                  <input
+                    id="carNum2"
+                    type="text"
+                    placeholder="add number"
+                    value={this.state.carNum2}
+                    onChange={this.handleChange}
+                  />
+                </td>
               </tr>
             </tbody>
           </table>
@@ -161,9 +209,12 @@ delete() {
               type="submit"
               class="submit-btn"
               value="  Delete Citizen"
-              onClick={() => {
-                this.props.changeView("admin");
-              },this.delete}
+              onClick={
+                (() => {
+                  this.props.changeView("admin");
+                },
+                this.delete)
+              }
             />
           </p>
         </form>
