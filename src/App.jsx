@@ -13,12 +13,12 @@ import CINComponent from "./components/cin.jsx"
 import DriveComponent from "./components/permis.jsx";
 import GreyComponent from "./components/cgrise.jsx"
 import EditUser from "./components/EditUser";
+
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       view: "home",
-      isAuthenticated: false,
       user: {},
       isAuthenticated: false,
       messages: {},
@@ -32,6 +32,7 @@ class App extends React.Component {
     this.updateUser = this.updateUser.bind(this);
   }
   updateUser(data) {
+    console.log(data);
     this.setState({
       isAuthenticated: true,
       actualUser: data.user,
@@ -40,13 +41,12 @@ class App extends React.Component {
 
   fetchData() {
     let one = "http://localhost:3001/api/messages";
-    let two = "http://localhost:3001/api/user";
+    let two = "http://localhost:3001/api/citizen";
     const requestOne = axios.get(one);
     const requestTwo = axios.get(two);
     axios
       .all([requestOne, requestTwo])
       .then(
-        
         axios.spread((...responses) => {
 console.log(responses);
           const responseOne = responses[0].data;
@@ -88,7 +88,7 @@ console.log(responses);
   }
 
   renderView() {
-    const { view, user ,actual} = this.state;
+    const { view, user, actual} = this.state;
 
     if (view === "home") {
       return <Home />;
@@ -107,11 +107,11 @@ console.log(responses);
       return <Messages messages ={this.state.messages}/>;
 
     }else if(view === "login"){
-return <Login updateUser={this.updateUser} />;
+return <Login updateUser={this.updateUser} user={user} />;
     }else if(view ==="contact"){
       return <Contact/>
     } else if(view === "cin"){
-      return <CINComponent/>
+      return <CINComponent actualUser={this.state.actualUser} user={this.state.user}/>
     } else if(view === "driving"){
       return <DriveComponent/>
     } else if(view === "grey"){
@@ -120,12 +120,17 @@ return <Login updateUser={this.updateUser} />;
     }else if (view === "edit"){
       return <EditUser actual={actual} />;
     }
-  }
+    }
+  
   render() {
     return (
       <div>
         <div className="nav">
-          <Navbar changeView={this.changeView} />
+          <Navbar
+            changeView={this.changeView}
+            isAuthenticated={this.state.isAuthenticated}
+            actualUser={this.state.actualUser}
+          />
         </div>
 
         <div className="main">{this.renderView()}</div>

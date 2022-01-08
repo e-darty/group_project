@@ -26,7 +26,7 @@ console.log(this.props)
   handleSubmit(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3001/api/user", this.state)
+      .post("http://localhost:3001/api/citizen", this.state)
      
       .then(({ data }) => {
          console.log(data);

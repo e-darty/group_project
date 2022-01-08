@@ -1,20 +1,18 @@
 const mongoose = require("mongoose");
-const userSchema = new mongoose.Schema({
-  cin: {
-    type: Number,
-    unique: true,
+const userSchema = new mongoose.Schema(
+  {
+    username: String,
+    password: String,
+    cin: {
+      type: Number,
+      unique: true,
+    },
   },
-  username: String,
-  password: String,
-  name: String,
-  lastName: String,
-  dateOfBirth: String,
-  placeOfBirth: String,
-  drivingLicence: String,
-  licence: String,
-  adress: String,
-});
+  {
+    timestamps: true,
+  }
+);
 
-const UserModel = mongoose.model("user", userSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = UserModel;
+module.exports = User;

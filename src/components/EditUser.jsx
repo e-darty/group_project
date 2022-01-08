@@ -28,7 +28,7 @@ export default class EditUser extends React.Component {
   handleSubmit() {
     axios
       .put(
-        `http://localhost:3001/api/user/${this.props.actual._id}`,
+        `http://localhost:3001/api/citizen/${this.props.actual._id}`,
         this.state
       )
       .then((response) => {
@@ -38,7 +38,7 @@ export default class EditUser extends React.Component {
 
 delete() {
 
- fetch(`http://localhost:3001/api/user/${this.props.actual._id}`, {
+ fetch(`http://localhost:3001/api/citizen/${this.props.actual._id}`, {
    method: "DELETE",
  }).then(() => this.setState({ status: "Delete successful" }));
   }

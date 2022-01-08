@@ -1,4 +1,4 @@
 module.exports = {
-  userService: require("./user.service.js"),
+  citizenService: require("./citizen.service.js"),
   messageService: require("./message.service.js"),
 };

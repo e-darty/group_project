@@ -1,4 +1,5 @@
 module.exports = {
-  userRoute: require("./user.routes"),
+  citizenRoute: require("./citizen.routes"),
   messageRoute: require("./message.routes"),
+  userRoute: require("./user.routes")
 };
