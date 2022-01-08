@@ -11,6 +11,11 @@ const citizenSchema = new mongoose.Schema({
   drivingLicence: String,
   licence: String,
   adress: String,
+  carName: String,
+  carType: String,
+  carNum1: String,
+  carNum2: String,
+
 });
 
 const CitizenModel = mongoose.model("citizen", citizenSchema);

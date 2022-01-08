@@ -9,9 +9,9 @@ import AddUser from "./components/AddUser";
 import Services from "./components/Services";
 import About from "./components/About";
 import Messages from "./components/Messages";
-import CINComponent from "./components/cin.jsx"
+import CINComponent from "./components/cin.jsx";
 import DriveComponent from "./components/permis.jsx";
-import GreyComponent from "./components/cgrise.jsx"
+import GreyComponent from "./components/cgrise.jsx";
 import EditUser from "./components/EditUser";
 
 class App extends React.Component {
@@ -22,7 +22,7 @@ class App extends React.Component {
       user: {},
       isAuthenticated: false,
       messages: {},
-      actual:{},
+      actual: {},
       actualUser: {},
     };
 
@@ -48,7 +48,7 @@ class App extends React.Component {
       .all([requestOne, requestTwo])
       .then(
         axios.spread((...responses) => {
-console.log(responses);
+          console.log(responses);
           const responseOne = responses[0].data;
           const responseTwo = responses[1].data;
           this.setState({
@@ -65,10 +65,10 @@ console.log(responses);
   componentDidMount() {
     this.fetchData();
   }
-  changeView(option,object) {
+  changeView(option, object) {
     this.setState({
       view: option,
-      actual:object
+      actual: object,
     });
   }
 
@@ -88,12 +88,11 @@ console.log(responses);
   }
 
   renderView() {
-    const { view, user, actual} = this.state;
+    const { view, user, actual } = this.state;
 
     if (view === "home") {
       return <Home />;
-    } 
-    else if (view === "contact") {
+    } else if (view === "contact") {
       return <Contact />;
     } else if (view === "admin") {
       return <Admin user={user} changeView={this.changeView} />;
@@ -104,24 +103,37 @@ console.log(responses);
     } else if (view === "about") {
       return <About />;
     } else if (view === "messages") {
-      return <Messages messages ={this.state.messages}/>;
-
-    }else if(view === "login"){
-return <Login updateUser={this.updateUser} user={user} />;
-    }else if(view ==="contact"){
-      return <Contact/>
-    } else if(view === "cin"){
-      return <CINComponent actualUser={this.state.actualUser} user={this.state.user}/>
-    } else if(view === "driving"){
-      return <DriveComponent/>
-    } else if(view === "grey"){
-      return <GreyComponent/>
-
-    }else if (view === "edit"){
+      return <Messages messages={this.state.messages} />;
+    } else if (view === "login") {
+      return <Login updateUser={this.updateUser} user={user} />;
+    } else if (view === "contact") {
+      return <Contact />;
+    } else if (view === "cin") {
+      return (
+        <CINComponent
+          actualUser={this.state.actualUser}
+          user={this.state.user}
+        />
+      );
+    } else if (view === "driving") {
+      return (
+        <DriveComponent
+          actualUser={this.state.actualUser}
+          user={this.state.user}
+        />
+      );
+    } else if (view === "grey") {
+      return (
+        <GreyComponent
+          actualUser={this.state.actualUser}
+          user={this.state.user}
+        />
+      );
+    } else if (view === "edit") {
       return <EditUser actual={actual} />;
     }
-    }
-  
+  }
+
   render() {
     return (
       <div>

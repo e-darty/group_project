@@ -11,8 +11,12 @@ export default class Admin extends React.Component {
       dateOfBirth: "",
       placeOfBirth: "",
       drivingLicence: "",
-      licence:"",
-      adress:""
+      licence: "",
+      adress: "",
+      carType: "",
+      carName: "",
+      carNum1: "",
+      carNum2: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,6 +53,11 @@ console.log(this.props)
                 <th>DRIVING LICENCE</th>
                 <th>LICENCE PLATE</th>
                 <th>ADRESS</th>
+                <th>Car Model</th>
+                <th>Car Type</th>
+                <th>Car Num1</th>
+                <th>Car Num2</th>
+
               </tr>
             </thead>
             <tbody>
@@ -68,6 +77,10 @@ console.log(this.props)
                   <td> {u.drivingLicence} </td>
                   <td> {u.licence} </td>
                   <td> {u.adress} </td>
+                  <td> {u.carName} </td>
+                  <td> {u.carType} </td>
+                  <td> {u.carNum1} </td>
+                  <td> {u.carNum2} </td>
                 </tr>
               ))}
             </tbody>

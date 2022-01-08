@@ -13,6 +13,10 @@ export default class AddUser extends React.Component {
       drivingLicence: "",
       licence: "",
       adress: "",
+      carType: "",
+      carName: "",
+      carNum1: "",
+      carNum2: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -116,6 +120,46 @@ export default class AddUser extends React.Component {
                 type="text"
                 placeholder="add adress"
                 value={this.state.adress}
+                onChange={this.handleChange}
+              />
+            </li>
+            <li>
+              <input
+                id="carName"
+                class="form-input"
+                type="text"
+                placeholder="add model"
+                value={this.state.carName}
+                onChange={this.handleChange}
+              />
+            </li>
+            <li>
+              <input
+                id="carType"
+                class="form-input"
+                type="text"
+                placeholder="add Type"
+                value={this.state.carType}
+                onChange={this.handleChange}
+              />
+            </li>
+            <li>
+              <input
+                id="carNum1"
+                class="form-input"
+                type="text"
+                placeholder="add number"
+                value={this.state.carNum1}
+                onChange={this.handleChange}
+              />
+            </li>
+            <li>
+              <input
+                id="carNum2"
+                class="form-input"
+                type="text"
+                placeholder="add number"
+                value={this.state.carNum2}
                 onChange={this.handleChange}
               />
             </li>
