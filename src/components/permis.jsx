@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
-import image from "./Permis.jpg";
-
+import image from "./avatar.png"
+import Footer from "./Footer.jsx"
 class DriverComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -93,6 +93,7 @@ class DriverComponent extends React.Component {
         <h3 style={CIN}> {this.state.cinUsername.cin} </h3>
         <h3 style={DateBirth}> {this.state.cinUsername.dateOfBirth} </h3>
         <h3 style={Location}> {this.state.cinUsername.address} </h3>
+        <Footer/>
       </div>
     );
   }

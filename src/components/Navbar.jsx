@@ -161,7 +161,7 @@ const Navbar = (props) => {
                 </MenuItem>
               </Menu>
             </div>
-            <Button
+            {/* <Button
               onClick={() => {
                 props.changeView("about");
               }}
@@ -171,7 +171,7 @@ const Navbar = (props) => {
               }}
             >
               about edarty
-            </Button>
+            </Button> */}
             <Button
               onClick={handleCloseNavMenu}
               sx={{ my: 2, color: "black", display: "block" }}

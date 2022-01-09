@@ -1,7 +1,7 @@
 import React from "react";
 import "../index.css";
 import axios from "axios";
-
+import Footer from "./Footer.jsx"
 export default class Contact extends React.Component {
   constructor(props) {
     super(props);
@@ -98,13 +98,12 @@ export default class Contact extends React.Component {
           <div class="contacts contact-wrapper">
             <ul>
               <li>
-                Get in touch with us and send us your opinion how we can help
-                you?
+                Get in touch with us and let us know how we can help you?
               </li>
               <span class="hightlight-contact-info">
                 <li class="email-info">
                   <i class="fa fa-envelope" aria-hidden="true"></i>{" "}
-                  info@demo.com
+                  info@edarty.com
                 </li>
                 <li>
                   <i class="fa fa-phone" aria-hidden="true"></i>{" "}
@@ -114,6 +113,7 @@ export default class Contact extends React.Component {
             </ul>
           </div>
         </div>
+        <Footer/>
       </div>
     );
   }
