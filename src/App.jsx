@@ -13,7 +13,7 @@ import CINComponent from "./components/cin.jsx";
 import DriveComponent from "./components/permis.jsx";
 import GreyComponent from "./components/cgrise.jsx";
 import EditUser from "./components/EditUser";
-
+import Footer from "./components/footer";
 class App extends React.Component {
   constructor() {
     super();
@@ -145,7 +145,10 @@ class App extends React.Component {
           />
         </div>
 
+
+
         <div className="main">{this.renderView()}</div>
+      
       </div>
     );
   }
