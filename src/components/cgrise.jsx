@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import image from "./cgrise.jpg";
-
+import Footer from "./Footer.jsx"
 class GreyComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -98,6 +98,7 @@ class GreyComponent extends React.Component {
         <h3 style={typeCar}> {this.state.cinUsername.carType}</h3>
         <h3 style={NumCar2}> {this.state.cinUsername.carNum2} </h3>
         <h3 style={NumCar1}> {this.state.cinUsername.carNum1} </h3>
+        <Footer/>
       </div>
     );
   }

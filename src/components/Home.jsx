@@ -1,3 +1,4 @@
+
 import React from "react";
 
 import AppBar from "@mui/material/AppBar";
@@ -19,6 +20,7 @@ import Info from "./Info";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 function Home(props) {
   return (
+
     <div
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL + "/image.png"})`,
@@ -29,6 +31,7 @@ function Home(props) {
         height: "100vh",
       }}
     >
+
       <h2 className="title">Welcome to edarty</h2>
 
       <Box
@@ -66,6 +69,7 @@ function Home(props) {
           ></Stack>
         </Container>
       </Box>
+
 
       <Box
         sx={{

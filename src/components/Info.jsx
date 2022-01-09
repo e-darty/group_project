@@ -1,11 +1,14 @@
+
 import * as React from "react";
 import Box from "@mui/material/Box";
 import { alpha } from "@mui/material/styles";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
+
 export default function Demo() {
   return (
     <div>
+
       <a href="https://www.steg.com.tn/fr/index.html">
         <Box
           sx={{
@@ -270,5 +273,6 @@ export default function Demo() {
         </Box>
       </a>
     </div>
+
   );
 }

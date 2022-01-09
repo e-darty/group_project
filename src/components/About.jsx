@@ -3,6 +3,7 @@ import React from "react";
 function About() {
   return (
     <div className="about">
+
       <img
         class="img-fluid rounded mb-4 mb-lg-0"
         src="https://payg.in/assets/img/business-verticals/online-services1.png"
@@ -15,8 +16,11 @@ function About() {
         process. We will be able to retrieve any type of certificate that you
         require including: - Your CIN - Your Grey Card - Your Driving Licence
       </p>
+
     </div>
   );
 }
 
+
 export default About;
+

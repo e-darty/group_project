@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import image from "./cin.jpg";
-
+import Footer from "./Footer.jsx"
 class CINComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -76,6 +76,7 @@ class CINComponent extends React.Component {
         <h3 style={LastName}> {this.state.cinUsername.lastName} </h3>
         <h3 style={DateBirth}> {this.state.cinUsername.dateOfBirth} </h3>
         <h3 style={Location}> {this.state.cinUsername.adress} </h3>
+        <Footer/>
       </div>
     );
   }
